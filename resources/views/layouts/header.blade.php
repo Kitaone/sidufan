@@ -1,7 +1,7 @@
 <?php 
 use Illuminate\Support\Facades\URL;
-use App\Models\Apps;
-$apps = Apps::get();
+// use App\Models\Apps;
+// $apps = Apps::get();
 ?>
 <header id="page-topbar" style="padding-top: 5px; padding-bottom: 5px;">
     <div class="layout-width">
@@ -10,18 +10,18 @@ $apps = Apps::get();
                 <div class="navbar-brand-box horizontal-logo">
                     <a href="index.html" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="{{url('assets/images/logo-sm.png')}}" alt="" height="22">
+                            <img src="{{url('assets/images/logo.png')}}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{url('assets/images/logo-dark.png')}}" alt="" height="17">
+                            <img src="{{url('assets/images/logo.png')}}" alt="" height="17">
                         </span>
                     </a>
                     <a href="index.html" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="{{url('assets/images/logo-sm.png')}}" alt="" height="22">
+                            <img src="{{url('assets/images/logo.png')}}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{url('assets/images/logo-light.png')}}" alt="" height="17">
+                            <img src="{{url('assets/images/logo.png')}}" alt="" height="17">
                         </span>
                     </a>
                 </div>
@@ -190,16 +190,6 @@ $apps = Apps::get();
                         </div>
                         <div class="p-2">
                             <div class="row g-0">
-                                <?php foreach ($apps as $row): ?>
-                                <div class="col-4">
-                                    <a class="dropdown-icon-item" href="{{url::to('sia/module/'.base64_encode($row->id))}}">
-                                        <?php echo $row->icon != null ? '<i class="'.$row->icon.'"></i>' : '' ?>
-                                        <span>
-                                            {{$row->name}}
-                                        </span>
-                                    </a>
-                                </div>
-                                <?php endforeach ?>
                                 <!-- <div class="col">
                                     <a class="dropdown-icon-item" href="#!">
                                         <img src="{{url('assets/images/brands/github.png')}}" alt="Github">

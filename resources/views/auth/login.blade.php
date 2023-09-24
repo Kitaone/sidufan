@@ -6,7 +6,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Sign In | Velzon - Admin & Dashboard Template</title>
+    <title>SIDUFAN Portal Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -62,14 +62,14 @@
                                         </div>
                                         @endif
                                         <div class="mt-4">
-                                            <form action="" method="POST">
+                                            <form action="{{ URL::to('/portal/auth-login') }}" method="POST">
                                                 @csrf
                                                 <div class="mb-3">
-                                                    <label for="email" class="form-label">Email</label>
-                                                    <input type="email" class="form-control" id="email" name="email"
-                                                        placeholder="Enter email">
+                                                    <label for="username" class="form-label">Email</label>
+                                                    <input type="username" class="form-control" id="username" name="username"
+                                                        placeholder="Enter username">
 
-                                                    @error('email')
+                                                    @error('username')
                                                     <small class="text-danger">{{ $message }}</small>
                                                     @enderror
                                                 </div>

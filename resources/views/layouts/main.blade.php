@@ -1,28 +1,27 @@
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg"
-    data-sidebar-image="none" data-preloader="disable">
+data-sidebar-image="none" data-preloader="disable">
 
 <head>
     <meta charset="utf-8" />
     <title>
-        Sistem Penilaian Online Terpadu | Al Azhar
+        Portal
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <link rel="shortcut icon" href="{{url('assets/images/logo.png')}}">
-    <script src="{{url('assets/js/layout.js')}}">
-    </script>
+    <script src="{{url('assets/js/layout.js')}}"></script>
     <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{url('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{url('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{url('assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
-        integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
@@ -33,14 +32,12 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            id="NotificationModalbtn-close">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="NotificationModalbtn-close">
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="mt-2 text-center">
-                            <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
-                                colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px">
+                            <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px">
                             </lord-icon>
                             <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
                                 <h4>
@@ -73,7 +70,7 @@
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                 <h4 class="mb-sm-0">
-                                    Sistem Penilaian Oneline Terpadu
+                                    Module
                                 </h4>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
@@ -83,7 +80,7 @@
                                             </a>
                                         </li>
                                         <li class="breadcrumb-item active">
-                                            Sistem Penilaian Oneline Terpadu
+                                            Sistem Interaktif Dufan
                                         </li>
                                     </ol>
                                 </div>
@@ -124,9 +121,9 @@
     <script src="{{url('assets/js/app.js')}}">
     </script>
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('.select2').select2();
-    });
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
     </script>
     @yield('script')
 </body>

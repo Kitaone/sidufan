@@ -1,87 +1,132 @@
 <?php 
 use Illuminate\Support\Facades\URL;
-use App\Models\AppsMenu;
-$AppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_delete'=>'0','is_root'=>'1'])->orderBy('menu_order','asc')->get();
+// use App\Models\AppsMenu;
+// $AppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_delete'=>'0','is_root'=>'1'])->orderBy('menu_order','asc')->get();
 ?>
 <div class="app-menu navbar-menu" style="padding-top: 1%;">
     <div class="navbar-brand-box">
-        <a href="{{ url::to('/sia/choose-app') }}" class="logo logo-dark">
+        <a href="{{ url::to('/portal/dashboard') }}" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="75px">
+                <img src="{{url('assets/images/logo.png')}}" alt="" height="75px">
             </span>
             <span class="logo-lg">
-                <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="75px">
+                <img src="{{url('assets/images/logo.png')}}" alt="" height="75px">
             </span>
         </a>
         <a href="index.html" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="75px">
+                <img src="{{url('assets/images/logo.png')}}" alt="" height="75px">
             </span>
             <span class="logo-lg">
-                <img src="{{url('assets/images/Logo-YPIA-150px_pudin.png')}}" alt="" height="75px">
+                <img src="{{url('assets/images/logo.png')}}" alt="" height="75px">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
-            id="vertical-hover">
-            <i class="ri-record-circle-line">
-            </i>
-        </button>
-    </div>
-    <div id="scrollbar">
-        <div class="container-fluid">
-            <div id="two-column-menu">
-            </div>
-            <ul class="navbar-nav" id="navbar-nav">
-                <li class="menu-title">
-                    <span data-key="t-menu">
-                        Menu
+        id="vertical-hover">
+        <i class="ri-record-circle-line">
+        </i>
+    </button>
+</div>
+<div id="scrollbar">
+    <div class="container-fluid">
+        <div id="two-column-menu">
+        </div>
+        <ul class="navbar-nav" id="navbar-nav">
+            <li class="menu-title">
+                <span data-key="t-menu">
+                    Menu
+                </span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="{{URL::to('/portal/dashboard')}}">
+                    <i data-feather="home" class="icon-dual">
+                    </i>
+                    <span data-key="t-dashboards">
+                        Dashboards
                     </span>
-                </li>
-                <?php foreach ($AppsMenu as $AM): ?>
-                <?php if ($AM->menu_type == 'dropdown'): ?>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#{{$AM->slug}}" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="{{$AM->slug}}">
-                        <?php echo $AM->menu_icon ?>
-                        <span data-key="t-{{$AM->slug}}">
-                            {{$AM->menu_name}}
-                        </span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="{{$AM->slug}}">
-                        <ul class="nav nav-sm flex-column">
-                            <?php 
-                                    $SubAppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_delete'=>'0','is_root'=>'0','id_parent'=>$AM->id])->orderBy('menu_order','asc')->get();
-                                    foreach ($SubAppsMenu as $SAM): ?>
-                            <li class="nav-item">
-                                <a href="{{url::to(Session::get('hcode').'/'.$SAM->menu_url)}}" class="nav-link"
-                                    data-key="t-{{$SAM->slug}}">
-                                    {{$SAM->menu_name}}
-                                </a>
-                            </li>
-                            <?php endforeach ?>
-                        </ul>
-                    </div>
-                </li>
-                <?php elseif($AM->menu_type == 'menu'): ?>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{url::to(Session::get('hcode').'/'.$AM->menu_url)}}">
-                        <?php echo $AM->menu_icon ?>
-                        <span data-key="t-{{$AM->slug}}">
-                            {{$AM->menu_name}}
-                        </span>
-                    </a>
-                </li>
-                <?php endif ?>
-                <?php endforeach ?>
-                <!-- <li class="nav-item">
-                    <a class="nav-link menu-link" href="/dashboard">
-                        <i data-feather="home" class="icon-dual">
-                        </i>
-                        <span data-key="t-dashboards">
-                            Dashboards
-                        </span>
-                    </a>
-                </li> -->
+                </a>
+            </li>
+            <li class="menu-title">
+                <span data-key="t-menu">
+                    Hiburan
+                </span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="{{URL::to('/portal/wahana')}}">
+                    <i data-feather="home" class="icon-dual">
+                    </i>
+                    <span data-key="t-dashboards">
+                        <?php echo ucwords(str_replace("_"," ",'wahana')) ?>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="{{URL::to('/portal/pertunjukan')}}">
+                    <i data-feather="grid" class="icon-dual">
+                    </i>
+                    <span data-key="t-dashboards">
+                        <?php echo ucwords(str_replace("_"," ",'pertunjukan')) ?>
+                    </span>
+                </a>
+            </li>
+            <li class="menu-title">
+                <span data-key="t-menu">
+                    Tenant
+                </span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarTenant" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTenant">
+                    <i data-feather="grid" class="icon-dual">
+                    </i>
+                    <span data-key="t-apps">
+                        <?php echo ucwords(str_replace("_"," ",'Food & Beverages')) ?>
+                    </span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarTenant">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="{{URL::to('/portal/tenant/snack')}}" class="nav-link" data-key="t-calendar">
+                                Snack & Drink
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{URL::to('/portal/tenant/restaurant')}}" class="nav-link" data-key="t-calendar">
+                                <?php echo ucwords(str_replace("_"," ",'restaurant')) ?>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="{{URL::to('/portal/tenant/souvenir')}}">
+                    <i data-feather="grid" class="icon-dual">
+                    </i>
+                    <span data-key="t-dashboards">
+                        <?php echo ucwords(str_replace("_"," ",'souvenir')) ?>
+                    </span>
+                </a>
+            </li>
+            <li class="menu-title">
+                <span data-key="t-menu">
+                    Bantuan
+                </span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="{{URL::to('/portal/misc/booth_informasi')}}">
+                    <i data-feather="circle" class="icon-dual"></i>
+                    <span data-key="t-dashboards">
+                        <?php echo ucwords(str_replace("_"," ",'booth_informasi')) ?>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="{{URL::to('/portal/wahana')}}">
+                    <i data-feather="circle" class="icon-dual"></i>
+                    <span data-key="t-dashboards">
+                        <?php echo ucwords(str_replace("_"," ",'wahana')) ?>
+                    </span>
+                </a>
+            </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link menu-link" href="/bk">
                         <i data-feather="home" class="icon-dual">
@@ -243,7 +288,6 @@ $AppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_delete'=>'0'
     <div class="sidebar-background">
     </div>
 </div>
-
 <!-- <div class="app-menu navbar-menu" style="padding-top: 1%;">
     <div class="navbar-brand-box">
         <a href="index.html" class="logo logo-dark">
@@ -600,7 +644,6 @@ $AppsMenu = AppsMenu::where(['apps_id'=>Session::get('apps_id'),'is_delete'=>'0'
                                 <a href="#sidebarnft" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarnft" data-key="t-nft-marketplace">
                                     NFT Marketplace
                                 </a>
-
                                 <div class="collapse menu-dropdown" id="sidebarnft">
                                     <ul class="nav nav-sm flex-column">
                                         <li class="nav-item">
