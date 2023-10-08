@@ -21,6 +21,9 @@ use App\Http\Controllers\{
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('portal', function () {
+    return redirect('/portal/login');
+});
 Route::get('portal/login', [AuthController::class, 'indexRender'])->name('login');
 Route::post('portal/auth-login', [AuthController::class, 'loginHandle'])->name('auth-login');
 Route::group(['prefix' => 'portal', 'middleware' => ['auth'], 'as' => 'portal'], function() {

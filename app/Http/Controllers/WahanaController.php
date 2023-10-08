@@ -9,20 +9,20 @@ use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
-class PertunjukanController extends Controller
+class WahanaController extends Controller
 {
     public function __construct()
     {
-        $this->module = ucwords(str_replace("_"," ",'pertunjukan'));
+        $this->module = ucwords(str_replace("_"," ",'wahana'));
     }
     public function index()
     {
         $data = [
             'module'        => $this->module,
-            'breadcrumb'    => ['portal','pertunjukan','list'],
+            'breadcrumb'    => ['portal','wahana','list'],
             'list'          => Event::where(['is_active'=>1])->get(),
         ];
-        return view('portal.pertunjukan.index',$data);
+        return view('portal.wahana.index',$data);
     }
     public function detail()
     {
@@ -30,11 +30,11 @@ class PertunjukanController extends Controller
     public function create()
     {
         $data = [
-            'form_action'   => URL::to('/portal/pertunjukan/store'),
+            'form_action'   => URL::to('/portal/wahana/store'),
             'form_method'   => 'POST',
             'category'      => Category::where(['is_active'=>'1','category_group'=>'event_category'])->orderBy('name','asc')->get(),
         ];
-        return view('portal.pertunjukan.create',$data);
+        return view('portal.wahana.create',$data);
     }
     public function store(Request $request)
     {
@@ -64,7 +64,7 @@ class PertunjukanController extends Controller
         // exit;
         $originalFileName   = $file->getClientOriginalName();
         $customFileName     = base64_encode(time().'_'.$originalFileName);
-        $filePath           = $file->storeAs('asssets/uploads/pertunjukan', $customFileName, 'public');
+        $filePath           = $file->storeAs('asssets/uploads/wahana', $customFileName, 'public');
         
         // $query = new Event();
         // $query->name        = $input['name'];
@@ -98,16 +98,16 @@ class PertunjukanController extends Controller
         ];
         $id = DB::table('event')->insertGetid($data);
         $request->session()->flash('alert',['class'=>'success','message'=>'Data saved!']);
-        return redirect('/portal/pertunjukan/detail/'.base64_encode($id));
+        return redirect('/portal/wahana/detail/'.base64_encode($id));
     }
     public function edit()
     {
         $data = [
-            'form_action'   => URL::to('/portal/pertunjukan/store'),
+            'form_action'   => URL::to('/portal/wahana/store'),
             'form_method'   => 'POST',
             'category'      => Category::where(['is_active'=>'1','category_group'=>'event_category'])->orderBy('name','asc')->get(),
         ];
-        return view('portal.pertunjukan.edit',$data);
+        return view('portal.wahana.edit',$data);
     }
     public function update(Request $request)
     {
